@@ -11,14 +11,37 @@ export class TemaService {
   constructor(private http: HttpClient) {}
 
   token = {
-    headers: new HttpHeaders().set('Authorization', environment.token)
+    headers: new HttpHeaders().set('Authorization', environment.token),
   };
 
   getAllTema(): Observable<Tema[]> {
-    return this.http.get<Tema[]>('https://ciusiblog.herokuapp.com/temas', this.token);
+    return this.http.get<Tema[]>(
+      'https://ciusiblog.herokuapp.com/temas',
+      this.token
+    );
+  }
+
+  getByIdTema(id: number): Observable<Tema> {
+    return this.http.get<Tema>(`https://ciusiblog.herokuapp.com/temas/${id}`, this.token)
   }
 
   postTema(tema: Tema): Observable<Tema> {
-    return this.http.post<Tema>('https://ciusiblog.herokuapp.com/temas', tema, this.token)
+    return this.http.post<Tema>(
+      'https://ciusiblog.herokuapp.com/temas',
+      tema,
+      this.token
+    );
+  }
+
+  putTema(tema: Tema): Observable<Tema> {
+    return this.http.put<Tema>(
+      'https://ciusiblog.herokuapp.com/temas',
+      tema,
+      this.token
+    );
+  }
+
+  deleteTema(id: number){
+    return this.http.delete(`https://ciusiblog.herokuapp.com/temas/${id}`, this.token)
   }
 }
