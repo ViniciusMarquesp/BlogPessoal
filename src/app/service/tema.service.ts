@@ -25,6 +25,10 @@ export class TemaService {
     return this.http.get<Tema>(`https://ciusiblog.herokuapp.com/temas/${id}`, this.token)
   }
 
+  getByTemaDescricao(descricao: string): Observable<Tema[]>{
+    return this.http.get<Tema[]>(`https://ciusiblog.herokuapp.com/temas/descricao/${descricao}`, this.token)
+  }
+
   postTema(tema: Tema): Observable<Tema> {
     return this.http.post<Tema>(
       'https://ciusiblog.herokuapp.com/temas',

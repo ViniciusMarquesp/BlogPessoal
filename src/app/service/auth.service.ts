@@ -24,6 +24,10 @@ export class AuthService {
     );
   }
 
+  getByIdUser(id: number): Observable<Usuario>{
+    return this.http.get<Usuario>(`https://ciusiblog.herokuapp.com/usuarios/${id}`)
+  }
+
   logado() {
     let ok = false;
 
