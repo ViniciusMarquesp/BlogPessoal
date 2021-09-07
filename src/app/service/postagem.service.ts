@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.prod';
-import { Postagem } from '../model/PostagemModel';
+import { Postagem } from '../model/Postagem';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class PostagemService {
     return this.http.get<Postagem[]>('https://ciusiblog.herokuapp.com/postagem', this.token)
   }
 
-  getByIdPostagem(id: number): Observable<Postagem[]>{
-    return this.http.get<Postagem[]>(`https://ciusiblog.herokuapp.com/postagem/${id}`, this.token)
+  getByIdPostagem(id: number): Observable<Postagem>{
+    return this.http.get<Postagem>(`https://ciusiblog.herokuapp.com/postagem/${id}`, this.token)
   }
 
   getByTituloPostagem(titulo: string): Observable<Postagem[]>{
