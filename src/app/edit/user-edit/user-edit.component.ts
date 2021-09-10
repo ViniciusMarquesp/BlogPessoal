@@ -19,7 +19,7 @@ export class UserEditComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -47,7 +47,7 @@ export class UserEditComponent implements OnInit {
     if (this.user.senha != this.confirmarSenha) {
       alert('A senhas estão incorretas.')
     } else {
-      this.authService.cadastrar(this.user).subscribe((resp: Usuario) => {
+      this.authService.putUsuario(this.user).subscribe((resp: Usuario) => {
         this.user = resp
         this.router.navigate(['/inicio'])
         alert('Usuário atualizado com sucesso, faça o login novamente.')
